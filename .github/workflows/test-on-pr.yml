@@ -57,8 +57,7 @@ jobs:
           name: cypress-results
           path: cypress/reports/junit
 
-        if: always()
-        run: |
+        # if: always()
 
       - name: Archive results
         if: always()
