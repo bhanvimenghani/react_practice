@@ -27,7 +27,7 @@ jobs:
           node-version: 20.7.0
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm config set legacy-peer-deps true && npm install
       - name: Setup Minikube
         uses: manusa/actions-setup-minikube@v2.3.0
         with:
