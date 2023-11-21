@@ -50,7 +50,7 @@ jobs:
           echo Deploy kruize in crc mode
           echo "***************************************************************"
           echo "PR_NUMBER = ${{ env.pr_number }}"
-          ./autotune_minikube_demo.sh -r -o docker.io/kruize/autotune_operator:0.0.20_mvp -u quay.io/bmenghan/kruize_ui_image_${pr_number}:latest
+          ./autotune_minikube_demo_setup.sh -r -o docker.io/kruize/autotune_operator:0.0.20_mvp -u quay.io/bmenghan/kruize_ui_image_${pr_number}:latest
       - name: Test UI
         run: |
           npm run cypress-report --config baseUrl=
