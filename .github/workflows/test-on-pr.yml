@@ -46,6 +46,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: kruize/autotune
+
+       - name: Build autotune
+        run: |
+          echo Build autotune
+          ./build.sh -i docker.io/kruize/autotune_operator:0.0.20_mvp
+          docker images | grep autotune     
       - name: Check cluster info on minikube
         run: |
           kubectl cluster-info
