@@ -47,11 +47,11 @@ jobs:
         with:
           repository: kruize/autotune
 
-      - name: Build autotune
-        run: |
-          echo Build autotune
-          ./build.sh -i docker.io/kruize/autotune_operator:0.0.20_mvp
-          docker images | grep autotune     
+      # - name: Build autotune
+      #   run: |
+      #     echo Build autotune
+      #     ./build.sh -i docker.io/kruize/autotune_operator:0.0.20_mvp
+      #     docker images | grep autotune     
       - name: Check cluster info on minikube
         run: |
           kubectl cluster-info
@@ -66,7 +66,7 @@ jobs:
           echo Deploy kruize in crc mode
           echo "***************************************************************"
           echo "PR_NUMBER = ${{ env.pr_number }}"
-          ./deploy.sh -o docker.io/kruize/autotune_operator:0.0.20_mvp -u quay.io/bmenghan/kruize_ui_image_${pr_number}:latest
+          ./deploy.sh -i docker.io/kruize/autotune_operator:0.0.20_mvp -u quay.io/bmenghan/kruize_ui_image_${pr_number}:latest
       - name: Test UI
         run: |
           npm run cypress-report --config baseUrl=
