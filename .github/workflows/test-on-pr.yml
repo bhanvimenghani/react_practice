@@ -47,7 +47,7 @@ jobs:
         with:
           repository: kruize/autotune
 
-       - name: Build autotune
+      - name: Build autotune
         run: |
           echo Build autotune
           ./build.sh -i docker.io/kruize/autotune_operator:0.0.20_mvp
