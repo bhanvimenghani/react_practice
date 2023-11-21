@@ -51,6 +51,7 @@ jobs:
           echo "***************************************************************"
           echo "PR_NUMBER = ${{ env.pr_number }}"
           cd remote_monitoring_demo
+          echo "hum"
           ./remote_monitoring_demo.sh -c minikube -r -o docker.io/kruize/autotune_operator:0.0.20_mvp -u quay.io/bmenghan/kruize_ui_image_${pr_number}:latest
       - name: Test UI
         run: |
