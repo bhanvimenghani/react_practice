@@ -42,9 +42,19 @@ jobs:
           echo "pr_number=${pr_number}" >> "$GITHUB_ENV"
           docker build -t bmenghan/kruize_ui_image_${pr_number}:latest .
           docker images | grep kruize
+
       - uses: actions/checkout@v3
         with:
           repository: kruize/autotune
+          - name: Check cluster info on minikube
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+      - name: Install Prometheus on minikube
+        run: |
+          echo Install Prometheus on minikube
+          cd scripts
+          ./prometheus_on_minikube.sh -as
       - name: Deploy Kruize in crc mode
         run: |
           echo Deploy kruize in crc mode
